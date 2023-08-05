@@ -1,0 +1,67 @@
+.blockInput{
+    margin: 60px auto;
+    width: 400px;
+    background-color: rgb(192, 191, 191);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-radius: 15px;
+}
+.blockInput input {
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    border-bottom: 2px solid rgb(192, 191, 191);
+}
+.btn2 {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 1px;
+    margin: 0 15px 15px 0;
+    outline: none;
+    border: 1px solid rgb(76, 76, 153);
+    border-radius: 25px;
+    height: 46px;
+    line-height: 0;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    vertical-align: top;
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+}
+.btn2 span {
+    display: block;
+    box-sizing: border-box;
+    padding: 0 25px;   
+    height: 42px;
+    line-height: 38px;   
+    border: 1px solid rgb(76, 76, 153);
+    border-radius: 25px;   
+    font-size: 14px;
+    color: #FFFFFF;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%), rgb(76, 76, 153);
+    text-align: center;
+    font-weight: 600;
+}
+.btn2:focus-visible {
+    box-shadow: 0 0 0 3px lightskyblue;
+}
+.btn2:hover span {
+    background-color: rgb(103, 103, 204)
+}
+.btn2:active span {
+    background-color: rgb(76, 76, 153) !important;
+}
+.btn2:disabled {
+    opacity: 0.65;
+    pointer-events: none;
+}

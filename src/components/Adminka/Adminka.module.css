@@ -1,0 +1,48 @@
+.header {
+  background-color: white;
+  height: 80px;
+  border-radius: 10px;
+  box-shadow: -10px 10px 10px 10px #e7e6e6;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; 
+  gap: 40px;
+  padding-left: 30px;
+  position: relative;
+}
+.adminka {
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+.buttonPanel {
+  border-width: 0;
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  background-color: #7367f0;
+}
+.buttonPanel:hover{
+  background-color: #a49cf5;
+}
+.content{
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: -10px 10px 10px 10px #e7e6e6;
+}
+.buttonExit{
+    border-width: 0px;
+    padding: 10px;
+    color: rgb(228, 47, 47);
+    font-size: 18px;
+    font-weight: 700;
+    border-radius:10px;
+    transition: 0.4s;
+    position: absolute;
+    right: 10px;
+}
+.buttonExit:hover{
+    color: white;
+    background-color: red;
+    right: 20px;
+}

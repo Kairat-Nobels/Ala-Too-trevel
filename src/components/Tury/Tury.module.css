@@ -1,0 +1,106 @@
+.headerLeft{
+    display: flex;
+    gap: 30px;
+
+}
+.headerLeft input{
+    border-radius: 10px;
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.headerLeft button {
+    border-radius: 5px;
+    color: white;
+    padding: 6px;
+    background-color: #7367f0;
+    transition: 0.3s;
+}
+.headerLeft button:hover{
+    background-color: #a49cf5;
+    border-color: rgb(103, 127, 206);
+}
+.cardHeader{
+    background-color: #f4f4f4;
+    font-size: 18px;
+    font-weight: 700;
+    color: #636363;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+.cardHeader button{
+    border-width: 0px;
+    padding: 10px;
+    color: rgb(228, 47, 47);
+    font-size: 18px;
+    font-weight: 700;
+    border-radius:10px;
+    transition: 0.4s;
+    position: absolute;
+    right: 10px;
+}
+.cardHeader button:hover{
+    color: white;
+    background-color: red;
+    right: 20px;
+}
+.inputUpdate{
+    padding: 10px;
+    border-radius: 10px;
+    border-color: #a49cf5;
+    font-size: 20px;
+    font-weight: 400;
+}
+.inputUpdate:focus{
+    border-color: #7367f0 !important;
+}
+.blockButton{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-end;
+}
+.update{
+    padding: 10px;
+    border-radius: 20px;
+    color: #5446ec;
+    transition: 0.3s;
+    font-weight: 600;
+    font-size: 18px;
+    background-color: transparent;
+    border: 0 transparent;
+}
+.update:hover{
+    background-color: #5446ec;
+    color: white;
+}
+.delete{
+    padding: 10px;
+    border-radius: 20px;
+    color: #f33131;
+    transition: 0.3s;
+    font-weight: 600;
+    font-size: 18px;
+    background-color: transparent;
+    border: 0 transparent;
+}
+.delete:hover{
+    background-color: #f33131;
+    color: white;
+}
+.cardUpdate p{
+    font-size: 18px;
+    font-weight: 600;
+}
+.cardUpdate textarea{
+    resize: none;
+    font-size: 14px;
+    padding: 10px;
+}
+.inputUpdate{
+    font-size: 14px;
+}
