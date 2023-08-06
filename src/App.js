@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import style from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Travel from './pages/Travel/Travel';
 import Admin from './pages/Admin/Admin';
-import styles from './App.css';
+import './App.css';
 import { getTravel } from './redux/action/getTravel';
 import { getSign } from './redux/action/getSign';
 import NavBar from './components/navbar/NavBar';
@@ -15,9 +14,11 @@ import ModalAction from './components/ModalAction/ModalAction';
 import Loader from './components/Loader/Loader';
 import TravelMoreInfo from './components/travelMoreInfo/TravelMoreInfo';
 
-export default function App() {
+export default function App()
+{
   const dispatch = useDispatch();
-  useEffect(() => {
+  useEffect(() =>
+  {
     dispatch(getTravel());
     dispatch(getSign());
   }, []);

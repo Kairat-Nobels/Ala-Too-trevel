@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
 import styles from './TravelMoreInfo.module.css';
 import { postRecord } from '../../redux/action/postRecord';
 import { changeLoader } from '../../redux/action/loader';
 
 export default function Travel()
 {
+  const { t, i18n } = useTranslation()
+
   const dispatch = useDispatch();
   const { id } = useParams();
   const travel = useSelector((s) => s.travel);
@@ -23,15 +25,15 @@ export default function Travel()
         <div className={styles.container}>
           <div className={styles.wrapper}>
             <img src={obj.img} className={styles.img} alt="img" />
-            <h1>{obj.name}</h1>
-            <p>{obj.description}</p>
+            <h1>{i18n.resolvedLanguage === 'ru' ? obj.name : obj.nameEng}</h1>
+            <p>{i18n.resolvedLanguage === 'ru' ? obj.description : obj.descEng}</p>
             <section>
               <div className={styles.services}>
                 <ul className={styles.service}>
                   <li>
-                    <h2>Что вас ожидает:</h2>
+                    <h2>{t('moreInfo_1')}</h2>
                     <ul style={{ marginLeft: '20px' }}>
-                      {obj.waiting.split('.').map((item, id) => (
+                      {(i18n.resolvedLanguage === 'ru' ? obj.waiting : obj.waitingEng).split('.').map((item, id) => (
                         <li key={id}>{item}</li>
                       ))}
                     </ul>
@@ -39,15 +41,15 @@ export default function Travel()
                 </ul>
                 <ul className={styles.service}>
                   <li>
-                    <h2>Что входит:</h2>
+                    <h2>{t('moreInfo_2')}</h2>
                     <ul style={{ marginLeft: '20px' }}>
-                      {obj.included.split('.').map((item, id) => (
+                      {(i18n.resolvedLanguage === 'ru' ? obj.included : obj.includedEng).split('.').map((item, id) => (
                         <li key={id}>{item}</li>
                       ))}
                     </ul>
                   </li>
                 </ul>
-                <span>Цена: {obj.price}</span>
+                <span>{t('tours_price')}: {obj.price} {t('som')}</span>
               </div>
               <div>
                 <img src={obj.img1} alt="img" />
@@ -70,7 +72,7 @@ export default function Travel()
                   });
                 }}
                 required
-                placeholder="Имя"
+                placeholder={t('home_form_name')}
               />
               <input
                 type="text"
@@ -105,9 +107,9 @@ export default function Travel()
                       phone: '',
                       travelId: '',
                     });
-                  } else alert('заполните все данные');
+                  } else alert(t('home_form_required'));
                 }}>
-                Записаться на тур
+                {t('submitBtn')}
               </button>
             </form>
           </div>

@@ -7,9 +7,12 @@ import { getTravel } from '../../redux/action/getTravel';
 import { getSign } from '../../redux/action/getSign';
 import { changeLoader } from '../../redux/action/loader';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Record()
 {
+  const { t } = useTranslation()
+
   const dispatch = useDispatch();
   const sign = useSelector(s =>
   {
@@ -43,17 +46,17 @@ export default function Record()
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', padding: '20px' }}>
         <div className={styles.headerLeft}>
-          <input type="text" value={search} onChange={(e) => { setsearch(e.target.value) }} />
+          <input type="text" placeholder={t('search')} value={search} onChange={(e) => { setsearch(e.target.value) }} />
         </div>
-        <h2 style={{ fontWeight: '500', color: '#636363', paddingRight: '1rem' }}>Записи</h2>
+        <h2 style={{ fontWeight: '500', color: '#636363', paddingRight: '1rem' }}>{t('adminka_menuRecords')}</h2>
       </div>
       <div>
         <div className={styles.cardHeader}>
           <p style={{ width: '20px' }}>ID</p>
-          <p style={{ width: '200px' }}>Имя</p>
-          <p style={{ width: '150px' }}>Телефон</p>
-          <p style={{ width: '100px' }}>Дата</p>
-          <p style={{ width: '200px' }}>Тур</p>
+          <p style={{ width: '200px' }}>{t('home_form_name')}</p>
+          <p style={{ width: '150px' }}>{t('tel')}</p>
+          <p style={{ width: '100px' }}>{t('tours_date')}</p>
+          <p style={{ width: '200px' }}>{t('tour')}</p>
         </div>
         <div>
           {
@@ -68,13 +71,13 @@ export default function Record()
                     <p style={{ width: '100px' }}>{el.date}</p>
                     {travel.find((e) => e.id == el.travel) ?
                       <p style={{ width: '400px' }}>{travel.find((e) => e.id == el.travel).name}</p>
-                      : <p style={{ width: '400px' }}>Тур удален</p>
+                      : <p style={{ width: '400px' }}>{t('tourDeleted')}</p>
                     }
                     <button onClick={() =>
                     {
                       dispatch(changeLoader(true))
                       deleteItem(el.id)
-                    }}>Удалить</button>
+                    }}>{t('delete_btn')}</button>
                   </div>
                   <div style={{ backgroundColor: '#f4f4f4', height: '3px' }}></div>
                 </div>

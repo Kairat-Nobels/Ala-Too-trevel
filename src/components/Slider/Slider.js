@@ -1,6 +1,10 @@
 import { Carousel } from 'react-carousel-minimal';
+import { useTranslation } from 'react-i18next';
 
-function Slider() {
+function Slider()
+{
+    const { i18n } = useTranslation()
+
     const data = [
         {
             image: "https://sputnik.kg/img/102340/99/1023409982_0:369:4752:3055_1920x0_80_0_0_71da6e1fcd996f03c840c7379f05839a.jpg",
@@ -30,7 +34,38 @@ function Slider() {
             image: "https://www.issykkul.biz/Portals/0/GHA_imgs/ushele_altyn_arashan/ushele_altyn_arashan_6.jpg_426.jpg",
             caption: "Ущелье Алтын Арашан"
         },
-        
+
+    ];
+    const dataEn = [
+        {
+            image: "https://sputnik.kg/img/102340/99/1023409982_0:369:4752:3055_1920x0_80_0_0_71da6e1fcd996f03c840c7379f05839a.jpg",
+            caption: 'Lake Kel-Suu'
+        },
+        {
+            image: "https://triptokyrgyzstan.com/sites/default/files/media/image/c_sergey_kalachov_1.jpg",
+            caption: 'Ala-Archa'
+        },
+        {
+            image: "https://img.itinari.com/pages/images/original/ead534b7-8015-4bef-a61c-4b9d1becb242-istock-1059719798.jpg?ch=DPR&dpr=2.625&w=1600&s=878131a02f67c22c62fd4b18e59c4c46",
+            caption: 'Canyon Tale'
+        },
+        {
+            image: "https://wikiway.com/upload/hl-photo/dba/c66/ozero-sary-chelek_27.jpg",
+            caption: "Lake Sary-Chelek"
+        },
+        {
+            image: "https://triptokyrgyzstan.com/sites/default/files/media/image/c_genadii_vyenko_1_0.jpg",
+            caption: 'Jeti-Oguz'
+        },
+        {
+            image: "https://www.kyrgyzland.com/sites/default/files/styles/hero/public/p8300141_0.jpg?itok=EeK9wlH8",
+            caption: 'Lake Kol-Tor'
+        },
+        {
+            image: "https://www.issykkul.biz/Portals/0/GHA_imgs/ushele_altyn_arashan/ushele_altyn_arashan_6.jpg_426.jpg",
+            caption: 'Altyn Arashan Gorge'
+        },
+
     ];
 
     const captionStyle = {
@@ -48,7 +83,7 @@ function Slider() {
                     padding: "0 20px"
                 }}>
                     <Carousel
-                        data={data}
+                        data={i18n.resolvedLanguage === 'ru' ? data : dataEn}
                         time={8000}
                         width="100%"
                         height="500px"

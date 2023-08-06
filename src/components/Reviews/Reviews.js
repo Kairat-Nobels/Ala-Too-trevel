@@ -5,9 +5,12 @@ import { CHECK_REQ } from '../../redux/reducer/type';
 import { getSign } from '../../redux/action/getSign';
 import { changeLoader } from '../../redux/action/loader';
 import { API_GET_SIGN } from '../../redux/config';
+import { useTranslation } from 'react-i18next';
 
 export default function Reviews()
 {
+  const { t } = useTranslation()
+
   const dispatch = useDispatch();
   const sign = useSelector(s =>
   {
@@ -41,17 +44,17 @@ export default function Reviews()
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', padding: '20px' }}>
         <div className={styles.headerLeft}>
-          <input type="text" value={search} onChange={(e) => { setsearch(e.target.value) }} />
+          <input type="text" placeholder={t('search')} value={search} onChange={(e) => { setsearch(e.target.value) }} />
         </div>
-        <h2 style={{ fontWeight: '500', color: '#636363', paddingRight: '1rem' }}>Отзывы</h2>
+        <h2 style={{ fontWeight: '500', color: '#636363', paddingRight: '1rem' }}>{t('adminka_menuReviews')}</h2>
       </div>
       <div>
         <div className={styles.cardHeader}>
           <p style={{ width: '20px' }}>ID</p>
-          <p style={{ width: '200px' }}>Имя</p>
-          <p style={{ width: '150px' }}>Телефон</p>
-          <p style={{ width: '100px' }}>Дата</p>
-          <p style={{ width: '200px' }}>Отзыв</p>
+          <p style={{ width: '200px' }}>{t('home_form_name')}</p>
+          <p style={{ width: '150px' }}>{t('tel')}</p>
+          <p style={{ width: '100px' }}>{t('tours_date')}</p>
+          <p style={{ width: '200px' }}>{t('review')}</p>
         </div>
         <div>
           {
@@ -69,7 +72,7 @@ export default function Reviews()
                     {
                       dispatch(changeLoader(true))
                       deleteItem(el.id)
-                    }}>Удалить</button>
+                    }}>{t('delete_btn')}</button>
                   </div>
                   <div style={{ backgroundColor: '#f4f4f4', height: '3px' }}></div>
                 </div>

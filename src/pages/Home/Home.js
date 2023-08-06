@@ -10,9 +10,11 @@ import { postRecord } from '../../redux/action/postRecord';
 import { changeLoader } from '../../redux/action/loader';
 import CardItem from '../../components/CardTravel/CardItem';
 import { Carousel } from 'react-carousel-minimal';
+import { useTranslation } from 'react-i18next';
 
 export default function Home()
 {
+  const { t } = useTranslation()
   const dispatch = useDispatch();
   const travelData = useSelector((s) => s.travel);
   const revData = useSelector((s) => s.sign);
@@ -28,7 +30,7 @@ export default function Home()
       <div className={styles.container}>
         <div className={styles.banner}>
           <div className={styles.banner_left}>
-            <h1 style={{ fontSize: '62px', color: 'white' }}>ПУТЕШЕСТВУЙ С</h1>
+            <h1 style={{ fontSize: '62px', color: 'white' }}>{t("slogan")}</h1>
             <h2 className={styles.text}>ALA-TOO TRAVEL</h2>
           </div>
           <div className={styles.banner_right}>
@@ -44,22 +46,21 @@ export default function Home()
           </div>
         </div>
       </div>
-      <p className={styles.headerText}>Наши экскурсии</p>
+      <p className={styles.headerText}>{t("home_excurs")}</p>
       <div className={styles.travel}>
         {travelData.slice(0, 4).map((el, index) =>
 
           <Link key={el.id} to={`/travel/${el.id}`}>
             <CardItem data={el} />
           </Link>
-
         )}
         <Link to="/travel">
-          <p className={styles.seeAll}>Смотреть всё...</p>
+          <p className={styles.seeAll}>{t("home_seeAll")}</p>
         </Link>
       </div>
-      <p className={styles.headerText}>Туристические маршруты</p>
+      <p className={styles.headerText}>{t("home_routes")}</p>
       <Slider />
-      <p className={styles.headerText}>Наши отзывы</p>
+      <p className={styles.headerText}>{t("home_reviews")}</p>
       <div className={styles.containerRev}>
         <div className={styles.rev}>
           {revData.map((el) =>
@@ -78,7 +79,7 @@ export default function Home()
       <div className={styles.record}>
         <div className={styles.recordCard}>
           <div className={styles.recordForm}>
-            <p className={styles.recordTitle}>Хотите записаться на тур?</p>
+            <p className={styles.recordTitle}>{t("home_form_title")}</p>
             <input
               type="text"
               className={styles.recordInput}
@@ -95,7 +96,7 @@ export default function Home()
                 });
               }}
               required
-              placeholder="Имя"
+              placeholder={t("home_form_name")}
             />
             <input
               type="text"
@@ -125,7 +126,7 @@ export default function Home()
                 fontSize: '18px',
                 color: 'white',
               }}>
-              Выберите тур
+              {t("home_form_tour")}
               <select
                 value={select}
                 onChange={(e) =>
@@ -142,7 +143,7 @@ export default function Home()
                     };
                   });
                 }}>
-                <option value={''}>Выберите тур</option>
+                <option value={''}>{t("home_form_tour")}</option>
                 {travelData.map((el) =>
                 {
                   return <option key={el.id}>{el.id + '.' + el.name}</option>;
@@ -163,9 +164,9 @@ export default function Home()
                     travelId: '',
                   });
                   setSelect('');
-                } else alert('заполните все данные');
+                } else alert(t("home_form_required"));
               }}>
-              Записаться на тур
+              {t("home_form_button")}
             </button>
           </div>
         </div>

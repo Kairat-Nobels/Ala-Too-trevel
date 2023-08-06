@@ -7,9 +7,12 @@ import { changeLoader } from '../../redux/action/loader';
 import { CHECK_REQ } from '../../redux/reducer/type';
 import ModalAdd from '../../components/modalAdd/ModalAdd';
 import { getSign } from '../../redux/action/getSign';
+import { useTranslation } from 'react-i18next';
 
 export default function Tury()
 {
+  const { t, i18n } = useTranslation()
+
   const [isShow, setIsShow] = useState(false);
   const dispatch = useDispatch();
   const travel = useSelector((s) => s.travel);
@@ -52,20 +55,24 @@ export default function Tury()
   {
     setIsShow(false);
   };
-  const updateTravel = async ({ name, price, img, img1, date, description, waiting, included }) =>
+  const updateTravel = async ({ name, nameEng, price, img, img1, date, description, descEng, waiting, waitingEng, included, includedEng }) =>
   {
     const response = await fetch(API_DELETE_TRAVEL + count, {
       method: "PUT",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: name,
+        nameEng: nameEng,
         price: price,
         img: img,
         img1: img1,
         date: date,
         description: description,
+        descEng: descEng,
         waiting: waiting,
-        included: included
+        waitingEng: waitingEng,
+        included: included,
+        includedEng: includedEng
       }),
     });
     if (response.status == 200) {
@@ -84,20 +91,24 @@ export default function Tury()
     dispatch(getTravel())
     setcount('all')
   }
-  const createTravel = async ({ name, price, img, img1, date, description, waiting, included }) =>
+  const createTravel = async ({ name, nameEng, price, img, img1, date, description, descEng, waiting, waitingEng, included, includedEng }) =>
   {
     const response = await fetch(API_DELETE_TRAVEL, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: name,
+        nameEng: nameEng,
         price: price,
         img: img,
         img1: img1,
         date: date,
         description: description,
+        descEng: descEng,
         waiting: waiting,
-        included: included
+        waitingEng: waitingEng,
+        included: included,
+        includedEng: includedEng
       }),
     });
     if (response.status == 201) {
@@ -118,13 +129,17 @@ export default function Tury()
   }
   const [product, setproduct] = useState({
     name: '',
+    nameEng: '',
     description: '',
+    descEng: '',
     price: '',
     img: '',
     img1: '',
     date: '',
     waiting: '',
-    included: ''
+    waitingEng: '',
+    included: '',
+    includedEng: ''
   })
   return (
     <div>
@@ -132,6 +147,7 @@ export default function Tury()
         <div className={styles.headerLeft}>
           <input
             type="text"
+            placeholder={t('search')}
             value={search}
             onChange={(e) =>
             {
@@ -143,26 +159,30 @@ export default function Tury()
             setcount(0)
             setproduct({
               name: '',
+              nameEng: '',
               description: '',
+              descEng: '',
               price: '',
               img: '',
               img1: '',
               date: '',
               waiting: '',
-              included: ''
+              waitingEng: '',
+              included: '',
+              includedEng: ''
             })
-          }}>Добавить</button>
+          }}>{t('addBtn')}</button>
         </div>
-        <h2 style={{ fontWeight: '500', color: '#636363', paddingRight: '1rem' }}>Туры</h2>
+        <h2 style={{ fontWeight: '500', color: '#636363', paddingRight: '1rem' }}>{t('menu_tours')}</h2>
       </div>}
       {count == 'all' ? (
         <div>
           <div className={styles.cardHeader}>
             <p style={{ width: '20px' }}>ID</p>
-            <p style={{ width: '200px' }}>Название</p>
-            <p style={{ width: '70px' }}>Цена</p>
-            <p style={{ width: '100px' }}>Дата</p>
-            <p style={{ width: '100px' }}>Описание</p>
+            <p style={{ width: '200px' }}>{t('tours_name')}</p>
+            <p style={{ width: '70px' }}>{t('tours_price')}</p>
+            <p style={{ width: '100px' }}>{t('tours_date')}</p>
+            <p style={{ width: '100px' }}>{t('tours_description')}</p>
           </div>
           <div>
             {travel.map((el) =>
@@ -188,11 +208,11 @@ export default function Tury()
                         }}>
                         {el.id}
                       </p>
-                      <p style={{ width: '200px' }}>{el.name}</p>
+                      <p style={{ width: '200px' }}>{i18n.resolvedLanguage === 'ru' ? el.name : el.nameEng}</p>
                       <p style={{ width: '70px' }}>{el.price}</p>
                       <p style={{ width: '100px' }}>{el.date}</p>
                       <p style={{ width: '500px', textAlign: 'justify' }}>
-                        {el.description.slice(0, 200)}
+                        {(i18n.resolvedLanguage === 'ru' ? el.description : el.descEng).slice(0, 200)}
                       </p>
                       <button
                         onClick={() =>
@@ -200,7 +220,7 @@ export default function Tury()
                           dispatch(changeLoader(true));
                           deleteItem(el.id);
                         }}>
-                        Удалить
+                        {t('delete_btn')}
                       </button>
                     </div>
                     <div style={{ backgroundColor: '#f4f4f4', height: '3px' }}></div>
@@ -212,49 +232,49 @@ export default function Tury()
       ) : (
         <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div className={styles.cardUpdate}>
-            <p>Наименвание:</p>
+            <p>{t('tours_name')} (RU):</p>
             <input type="text" className={styles.inputUpdate} style={{ width: '40%' }} value={product.name}
               onChange={(e) =>
               {
                 setproduct((s) =>
                 {
                   return {
-                    name: e.target.value,
-                    description: s.description,
-                    img: s.img,
-                    img1: s.img1,
-                    price: s.price,
-                    waiting: s.waiting,
-                    included: s.included,
-                    date: s.date
+                    ...s, name: e.target.value
                   }
                 })
               }}
             />
           </div>
           <div className={styles.cardUpdate}>
-            <p>Цена:</p>
+            <p>{t('tours_name')} (ENG):</p>
+            <input type="text" className={styles.inputUpdate} style={{ width: '40%' }} value={product.nameEng}
+              onChange={(e) =>
+              {
+                setproduct((s) =>
+                {
+                  return {
+                    ...s, nameEng: e.target.value
+                  }
+                })
+              }}
+            />
+          </div>
+          <div className={styles.cardUpdate}>
+            <p>{t('tours_price')}:</p>
             <input type="text" className={styles.inputUpdate} style={{ width: '140px' }} value={product.price}
               onChange={(e) =>
               {
                 setproduct((s) =>
                 {
                   return {
-                    name: s.name,
-                    description: s.description,
-                    img: s.img,
-                    img1: s.img1,
-                    price: e.target.value,
-                    waiting: s.waiting,
-                    included: s.included,
-                    date: s.date
+                    ...s, price: e.target.value
                   }
                 })
               }}
             />
           </div>
           <div className={styles.cardUpdate}>
-            <p>Ссылки к фотографиям:</p>
+            <p>{t('photos_links')}:</p>
             <input
               type="text"
               className={styles.inputUpdate}
@@ -265,14 +285,7 @@ export default function Tury()
                 setproduct((s) =>
                 {
                   return {
-                    name: s.name,
-                    description: s.description,
-                    img: e.target.value,
-                    img1: s.img1,
-                    price: s.price,
-                    waiting: s.waiting,
-                    included: s.included,
-                    date: s.date
+                    ...s, img: e.target.value
                   }
                 })
               }}
@@ -287,80 +300,68 @@ export default function Tury()
                 setproduct((s) =>
                 {
                   return {
-                    name: s.name,
-                    description: s.description,
-                    img: s.img,
-                    img1: e.target.value,
-                    price: s.price,
-                    waiting: s.waiting,
-                    included: s.included,
-                    date: s.date
+                    ...s, img1: e.target.value
                   }
                 })
               }}
             />
           </div>
           <div className={styles.cardUpdate}>
-            <p>Дата выезда:</p>
+            <p>{t('date_go')}:</p>
             <input type="date" className={styles.inputUpdate} value={product.date.split('.').reverse().join('-')} onChange={(e) => setproduct((s) =>
             {
               return {
-                name: s.name,
-                description: s.description,
-                img: s.img,
-                img1: s.img1,
-                price: s.price,
-                waiting: s.waiting,
-                included: s.included,
-                date: e.target.value
+                ...s, date: e.target.value
               }
             })} />
           </div>
           <div className={styles.cardUpdate}>
-            <p>Описание тура:</p>
+            <p>{t("tour_desc")} (RU):</p>
             <textarea type="text" style={{ width: '100%', height: '100px' }} value={product.description} onChange={(e) => setproduct((s) =>
             {
-              return {
-                name: s.name,
-                description: e.target.value,
-                img: s.img,
-                img1: s.img1,
-                price: s.price,
-                waiting: s.waiting,
-                included: s.included,
-                date: s.date
-              }
+              return { ...s, description: e.target.value }
             })} />
           </div>
           <div className={styles.cardUpdate}>
-            <p>Ожидание по туру:</p>
+            <p>{t("tour_desc")} (ENG):</p>
+            <textarea type="text" style={{ width: '100%', height: '100px' }} value={product.descEng} onChange={(e) => setproduct((s) =>
+            {
+              return { ...s, descEng: e.target.value }
+            })} />
+          </div>
+          <div className={styles.cardUpdate}>
+            <p>{t("tour_waiting")} (RU):</p>
             <textarea type="text" style={{ width: '100%', height: '100px' }} value={product.waiting} onChange={(e) => setproduct((s) =>
             {
               return {
-                name: s.name,
-                description: s.description,
-                img: s.img,
-                img1: s.img1,
-                price: s.price,
-                waiting: e.target.value,
-                included: s.included,
-                date: s.date
+                ...s, waiting: e.target.value
               }
             })} />
           </div>
           <div className={styles.cardUpdate}>
-            <p>Что входит в тур:</p>
+            <p>{t("tour_waiting")} (ENG):</p>
+            <textarea type="text" style={{ width: '100%', height: '100px' }} value={product.waitingEng} onChange={(e) => setproduct((s) =>
+            {
+              return {
+                ...s, waitingEng: e.target.value
+              }
+            })} />
+          </div>
+          <div className={styles.cardUpdate}>
+            <p>{t("tour_include")} (RU):</p>
             <textarea type="text" style={{ width: '100%', height: '100px' }} value={product.included} onChange={(e) => setproduct((s) =>
             {
               return {
-                name: s.name,
-                description: s.description,
-                img: s.img,
-                img1: s.img1,
-                price: s.price,
-                waiting: s.waiting,
-                included: e.target.value,
-                date: s.date
+                ...s, included: e.target.value
+              }
+            })} />
+          </div>
+          <div className={styles.cardUpdate}>
+            <p>{t("tour_include")} (ENG):</p>
+            <textarea type="text" style={{ width: '100%', height: '100px' }} value={product.includedEng} onChange={(e) => setproduct((s) =>
+            {
+              return {
+                ...s, includedEng: e.target.value
               }
             })} />
           </div>
@@ -368,28 +369,27 @@ export default function Tury()
             {count == 0 ? <button className={styles.update}
               onClick={() =>
               {
-                if (product.date && product.description && product.img && product.img1
-                  && product.included && product.name && product.price && product.waiting) {
+                if (product.date && product.description && product.img && product.img1 && product.included && product.name && product.price && product.waiting && product.nameEng && product.descEng && product.waitingEng && product.includedEng) {
                   dispatch(changeLoader(true))
                   createTravel(product)
                 } else {
-                  alert('Заполните все данные')
+                  alert(t('home_form_required'))
                 }
               }}
-            >Создать</button>
+            >{t("createBtn")}</button>
               : <button className={styles.update}
                 onClick={() =>
                 {
                   if (product.date && product.description && product.img && product.img1
-                    && product.included && product.name && product.price && product.waiting) {
+                    && product.included && product.name && product.price && product.waiting && product.nameEng && product.descEng && product.waitingEng && product.includedEng) {
                     dispatch(changeLoader(true))
                     updateTravel(product)
                   } else {
-                    alert('Заполните все данные')
+                    alert(t('home_form_required'))
                   }
                 }}
-              >Обновить и закрыть</button>}
-            <button className={styles.update} onClick={() => setcount('all')}>Назад</button>
+              >{t("resolveBtn")}</button>}
+            <button className={styles.update} onClick={() => setcount('all')}>{t("goBack")}</button>
           </div>
         </div>
       )}

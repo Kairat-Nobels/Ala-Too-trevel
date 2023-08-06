@@ -9,9 +9,11 @@ import { API_GET_SIGN } from '../../redux/config';
 import { CHECK_REQ } from '../../redux/reducer/type';
 import { getSign } from '../../redux/action/getSign';
 import { currentDate } from '../../components/Script';
+import { useTranslation } from 'react-i18next';
 
 export default function About()
 {
+    const { t } = useTranslation()
     const dispatch = useDispatch();
     const dataReviews = useSelector((s) =>
     {
@@ -63,7 +65,7 @@ export default function About()
         <div className={styles.block}>
             <div className={styles.container}>
                 <div className={styles.text}>
-                    <h2>Бишкек проспект Чуй 155</h2>
+                    <h2>{t('about_address')}</h2>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                         <img src={inst} />
                         <p>kairat_nobels</p>
@@ -73,7 +75,7 @@ export default function About()
                 </div>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2923.8429638771795!2d74.61189947593944!3d42.8761585711496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb7c0cdbbae15%3A0xa6b565413fa531df!2z0KbQo9CcINCQ0LnRh9Kv0YDTqdC6!5e0!3m2!1sru!2skg!4v1691144114962!5m2!1sru!2skg" width="600" height="450" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <h2>Наши отзывы:</h2>
+            <h2>{t('about_reviews')}</h2>
             <div className={styles.containerReview}>
                 {dataReviews.map((el, index) =>
                 {
@@ -96,15 +98,15 @@ export default function About()
                     type="text"
                     value={name}
                     onChange={(e) => setname(e.target.value)}
-                    placeholder="Имя"
+                    placeholder={t('home_form_name')}
                 />
                 <input
                     type="text"
                     value={review}
                     onChange={(e) => setReview(e.target.value)}
-                    placeholder="Напишите комментарий..."
+                    placeholder={t('about_placeholder')}
                 />
-                <button onClick={handleSend}>Оставить отзыв</button>
+                <button onClick={handleSend}>{t('about_btn')}</button>
             </div>
         </div>
     );
