@@ -9,7 +9,6 @@ import './App.css';
 import { getTravel } from './redux/action/getTravel';
 import { getSign } from './redux/action/getSign';
 import NavBar from './components/navbar/NavBar';
-import Footer from './components/footer/Footer';
 import ModalAction from './components/ModalAction/ModalAction';
 import Loader from './components/Loader/Loader';
 import TravelMoreInfo from './components/travelMoreInfo/TravelMoreInfo';
@@ -28,15 +27,15 @@ export default function App()
   return (
     <div>
       <BrowserRouter>
-        {true && <NavBar />}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/travel" element={<Travel />} />
-          <Route path="/travel/:id" element={<TravelMoreInfo />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path='/' element={<NavBar />} >
+            <Route index element={<Home />} />
+            <Route path="/travel" element={<Travel />} />
+            <Route path="/travel/:id" element={<TravelMoreInfo />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/admin" element={<Admin />} />
+          </Route>
         </Routes>
-        {true && <Footer />}
         {checkACtion == 'accept' ? (
           <ModalAction typeAction={true} />
         ) : (

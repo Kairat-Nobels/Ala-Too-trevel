@@ -64,7 +64,8 @@ function Footer()
           </div>
         </div>
         <hr />
-        <span>{t('footer_copyright')}<br />{t('footer_madeBy')}</span>
+        <span>{t('footer_copyright')}</span>
+        <p className={styles.footerCopy}>{t('footer_madeBy')}</p>
       </div>
     </footer>
   );

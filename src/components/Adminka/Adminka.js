@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Adminka.module.css'
 import Tury from '../Tury/Tury'
 import Record from '../Record/Record'
@@ -16,6 +16,10 @@ export default function Adminka()
   {
     dispatch(checkAdminUpdate(false))
   }
+  useEffect(() =>
+  {
+    window.scrollTo(0, 0);
+  }, [])
   return (
     <div className={styles.adminka}>
       <div className={styles.header}>

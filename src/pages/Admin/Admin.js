@@ -19,40 +19,42 @@ export default function Admin()
     <div>
       {
         adminStatus ? <Adminka />
-          : <div className={styles.blockInput}>
-            <h2>{t('admin_h2')}</h2>
-            <input value={dataAdmin.login} onChange={(e) =>
-            {
-              setDataAdmin(s =>
+          : <div className={styles.adminContain}>
+            <div className={styles.blockInput}>
+              <h2>{t('admin_h2')}</h2>
+              <input value={dataAdmin.login} onChange={(e) =>
               {
-                return {
-                  login: e.target.value,
-                  password: s.password
-                }
-              })
-            }} />
-            <input value={dataAdmin.password} type='password' onChange={(e) =>
-            {
-              setDataAdmin(s =>
-              {
-                return {
-                  login: s.login,
-                  password: e.target.value
-                }
-              })
-            }} />
-            <button className={styles.btn2} onClick={() =>
-            {
-              if (dataAdmin.login == 'admin' && dataAdmin.password == '1234') {
-                dispatch(checkAdminUpdate(true))
-                setDataAdmin({
-                  login: '',
-                  password: ''
+                setDataAdmin(s =>
+                {
+                  return {
+                    login: e.target.value,
+                    password: s.password
+                  }
                 })
-              } else {
-                alert('Неправиильные данные!')
-              }
-            }}><span>{t('admin_btn')}</span></button>
+              }} />
+              <input value={dataAdmin.password} type='password' onChange={(e) =>
+              {
+                setDataAdmin(s =>
+                {
+                  return {
+                    login: s.login,
+                    password: e.target.value
+                  }
+                })
+              }} />
+              <button className={styles.btn2} onClick={() =>
+              {
+                if (dataAdmin.login == 'admin' && dataAdmin.password == '1234') {
+                  dispatch(checkAdminUpdate(true))
+                  setDataAdmin({
+                    login: '',
+                    password: ''
+                  })
+                } else {
+                  alert('Неправиильные данные!')
+                }
+              }}><span>{t('admin_btn')}</span></button>
+            </div>
           </div>
       }
     </div>

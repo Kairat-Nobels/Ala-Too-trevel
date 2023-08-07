@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Reviews.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { CHECK_REQ } from '../../redux/reducer/type';
@@ -10,7 +10,10 @@ import { useTranslation } from 'react-i18next';
 export default function Reviews()
 {
   const { t } = useTranslation()
-
+  useEffect(() =>
+  {
+    window.scrollTo(0, 0);
+  }, [])
   const dispatch = useDispatch();
   const sign = useSelector(s =>
   {

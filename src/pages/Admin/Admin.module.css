@@ -1,5 +1,4 @@
-.blockInput{
-    margin: 60px auto;
+.blockInput {
     width: 400px;
     background-color: rgb(192, 191, 191);
     padding: 30px;
@@ -9,12 +8,21 @@
     gap: 20px;
     border-radius: 15px;
 }
+
+.adminContain {
+    height: calc(100vh - 352px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .blockInput input {
     border: none;
     padding: 10px;
     border-radius: 10px;
     border-bottom: 2px solid rgb(192, 191, 191);
 }
+
 .btn2 {
     display: inline-block;
     box-sizing: border-box;
@@ -38,29 +46,34 @@
     appearance: none;
     touch-action: manipulation;
 }
+
 .btn2 span {
     display: block;
     box-sizing: border-box;
-    padding: 0 25px;   
+    padding: 0 25px;
     height: 42px;
-    line-height: 38px;   
+    line-height: 38px;
     border: 1px solid rgb(76, 76, 153);
-    border-radius: 25px;   
+    border-radius: 25px;
     font-size: 14px;
     color: #FFFFFF;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%), rgb(76, 76, 153);
     text-align: center;
     font-weight: 600;
 }
+
 .btn2:focus-visible {
     box-shadow: 0 0 0 3px lightskyblue;
 }
+
 .btn2:hover span {
     background-color: rgb(103, 103, 204)
 }
+
 .btn2:active span {
     background-color: rgb(76, 76, 153) !important;
 }
+
 .btn2:disabled {
     opacity: 0.65;
     pointer-events: none;

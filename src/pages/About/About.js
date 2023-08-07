@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeLoader } from '../../redux/action/loader';
 import address from '../../assets/habibaddress.jpg';
@@ -61,6 +61,11 @@ export default function About()
             dispatch(changeLoader(false));
         }
     };
+
+    useEffect(() =>
+    {
+        window.scrollTo(0, 0);
+    }, [])
     return (
         <div className={styles.block}>
             <div className={styles.container}>
@@ -100,7 +105,8 @@ export default function About()
                     onChange={(e) => setname(e.target.value)}
                     placeholder={t('home_form_name')}
                 />
-                <input
+                <textarea
+                    cols={60} rows={5}
                     type="text"
                     value={review}
                     onChange={(e) => setReview(e.target.value)}

@@ -1,34 +1,63 @@
-.wrapper{
+.wrapper {
     display: flex;
     flex-direction: column;
     gap: 30px;
     margin: 20px auto;
 }
-.wrapper>p{
+
+.wrapper>p {
+    font-size: 18px;
+    padding: 0 10px;
+    font-weight: 500;
+    line-height: 22px;
     letter-spacing: 1px;
-    line-height: 20px;
 }
-.img{
-    width: 100%;
+
+.content {
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
+
+.context {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.context h1 {
+    font-size: 36px;
+}
+
+
+.img {
+    width: 80%;
+    border-radius: 20px;
+}
+
 .container {
     width: 1120px;
     margin: 0 auto;
 }
 
-.form{
+.form {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
     gap: 10px;
 }
-.form input{
+
+.form input {
     width: 370px;
     border-radius: 10px;
     padding-left: 20px;
     border: 2px solid gray;
 }
-.form button{
+
+.form button {
     width: 150px;
     height: 50px;
     border-radius: 40px;
@@ -37,32 +66,39 @@
     background: black;
     cursor: pointer;
 }
-section{
+
+section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
-section div{
+
+section div {
     width: 50%;
 }
-section img{
+
+section img {
     width: 100%;
     border-radius: 20px;
 }
-section .services{
+
+section .services {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.service h2{
+
+.service h2 {
     margin-bottom: 10px;
 }
-.service ul{
+
+.service ul {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
-.services span{
+
+.services span {
     font-size: 30px;
     font-weight: 700;
 }

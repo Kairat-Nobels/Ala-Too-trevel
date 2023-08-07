@@ -1,52 +1,71 @@
-*{
-}
 .container {
   background-image: url("../../assets/baner.png");
   background-size: cover;
-  width: "100%";
-  height: 100vh;
+  height: calc(100vh - 100px);
+  min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .text {
   font-size: 62px;
   color: transparent;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
 }
+
 .banner {
   width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .banner_right {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
+.banner_right a {
+  transition: .4s;
+}
+
+.banner_right a:hover {
+  transform: rotate(360deg) scale(1.2);
+}
+
+.banner_right img {
+  width: 45px;
+}
+
 .record {
+  margin-top: 30px;
   background-image: url("../../assets/bgc.png");
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 100px);
   background-size: cover;
   display: flex;
   justify-content: flex-end;
 }
+
 .recordCard {
   width: 50%;
   height: 100%;
   backdrop-filter: blur(3px);
 }
+
 .recordForm {
   width: 60%;
   margin: 0 auto;
   display: flex;
   height: 100%;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 45px;
 }
+
 .recordInput {
   background-color: transparent;
   border-color: transparent;
@@ -55,9 +74,11 @@
   border-bottom: 1px solid white;
   padding: 10px;
 }
-::placeholder{
+
+::placeholder {
   color: rgb(184, 184, 184);
 }
+
 .recordButton {
   display: inline-block;
   background-color: #0499dd;
@@ -66,24 +87,22 @@
   padding: 12px 43px;
   border-color: transparent;
 }
-.recordTitle{
+
+.recordTitle {
   font-size: 24px;
   color: white;
   font-weight: 700;
 }
-.containerRev{
-  overflow: auto;
-  scrollbar-color: #458245 #714826;
-  scrollbar-width: none;
-  width: 100%;
-}
-.rev{
+
+
+.rev {
   gap: 50px;
-  padding: 25px;
+  padding: 0 25px 20px;
   display: flex;
-  flex-direction: row;
+  overflow: auto;
 }
-.revCard{
+
+.revCard {
   min-width: 400px;
   background-color: rgb(226, 226, 226);
   padding: 20px;
@@ -91,17 +110,21 @@
   font-size: 18px;
   font-weight: 600;
 }
-.revCard p{
+
+.revCard p {
   font-size: 16px;
   font-weight: 400;
+  margin-top: 15px;
 }
-.headerText{
+
+.headerText {
   text-align: center;
   font-size: 30px;
-  margin: 20px auto;
+  margin: 40px auto 25px;
   color: rgb(49, 49, 49);
 }
-.travel{
+
+.travel {
   margin: 0 40px;
   display: flex;
   flex-direction: row;
@@ -112,33 +135,38 @@
   position: relative;
   padding-bottom: 50px;
 }
-.seeAll{
+
+.seeAll {
   color: rgb(41, 59, 138);
   bottom: 0;
   right: 10px;
   position: absolute;
   cursor: pointer;
-  padding: 5px;
+  padding: 5px 12px;
   border-radius: 10px;
   transition: 0.3s;
   font-weight: 600;
   font-size: 20px;
 }
-.seeAll:hover{
+
+.seeAll:hover {
   background-color: rgb(41, 59, 138);
   color: white;
   right: 20px;
 }
-.select select{
+
+.select select {
   padding: 8px 16px;
   border-radius: 10px;
   color: white;
   border: 1px solid rgb(0, 94, 110);
   background-color: grey;
 }
-.name{
+
+.name {
   font-size: 18px;
 }
-.price{
+
+.price {
   color: yellow;
 }

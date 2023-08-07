@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Tury.module.css';
 import { API_DELETE_TRAVEL, API_GET_TRAVEL } from '../../redux/config';
@@ -141,6 +141,10 @@ export default function Tury()
     included: '',
     includedEng: ''
   })
+  useEffect(() =>
+  {
+    window.scrollTo(0, 0);
+  }, [])
   return (
     <div>
       {count == 'all' && <div style={{ display: 'flex', justifyContent: 'space-between', padding: '20px' }}>

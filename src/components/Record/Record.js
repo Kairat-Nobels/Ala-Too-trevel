@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './Record.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { API_GET_SIGN } from '../../redux/config';
@@ -12,7 +12,10 @@ import { useTranslation } from 'react-i18next';
 export default function Record()
 {
   const { t } = useTranslation()
-
+  useEffect(() =>
+  {
+    window.scrollTo(0, 0);
+  }, [])
   const dispatch = useDispatch();
   const sign = useSelector(s =>
   {

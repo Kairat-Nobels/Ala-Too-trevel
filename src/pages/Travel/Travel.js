@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import styles from './Travel.module.css';
@@ -8,6 +8,10 @@ import CardItem from '../../components/CardTravel/CardItem';
 
 export default function Travel()
 {
+  useEffect(() =>
+  {
+    window.scrollTo(0, 0);
+  }, [])
   const travel = useSelector((s) => s.travel);
   return (
     <div className={styles.container}>

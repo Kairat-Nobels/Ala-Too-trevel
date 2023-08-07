@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from '../../components/Slider/Slider';
 import styles from './Home.module.css';
@@ -18,6 +18,10 @@ export default function Home()
   const dispatch = useDispatch();
   const travelData = useSelector((s) => s.travel);
   const revData = useSelector((s) => s.sign);
+  useEffect(() =>
+  {
+    window.scrollTo(0, 0);
+  }, [])
   const [record, setRecord] = useState({
     name: '',
     phone: '',
@@ -61,20 +65,16 @@ export default function Home()
       <p className={styles.headerText}>{t("home_routes")}</p>
       <Slider />
       <p className={styles.headerText}>{t("home_reviews")}</p>
-      <div className={styles.containerRev}>
-        <div className={styles.rev}>
-          {revData.map((el) =>
-            <div key={el.id}>
-              {el.type == 1 && (
-                <div key={el.id} className={styles.revCard}>
-                  {el.name}
-                  <p>{el.description}</p>
-                  <p style={{ textAlign: 'end', fontWeight: '600' }}>{el.date}</p>
-                </div>
-              )}
+      <div className={styles.rev}>
+        {revData.filter(f => f.type == 1).map((el) =>
+          <div key={el.id}>
+            <div key={el.id} className={styles.revCard}>
+              {el.name}
+              <p>{el.description}</p>
+              <p style={{ textAlign: 'end', fontWeight: '600' }}>{el.date}</p>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
       <div className={styles.record}>
         <div className={styles.recordCard}>

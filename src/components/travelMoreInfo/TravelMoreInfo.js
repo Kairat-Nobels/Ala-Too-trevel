@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -18,14 +18,20 @@ export default function Travel()
     phone: '',
     travelId: id,
   });
+  useEffect(() =>
+  {
+    window.scrollTo(0, 0);
+  }, [])
   const obj = travel.find((item) => item.id === id);
   return (
     <>
       {obj && (
         <div className={styles.container}>
           <div className={styles.wrapper}>
-            <img src={obj.img} className={styles.img} alt="img" />
-            <h1>{i18n.resolvedLanguage === 'ru' ? obj.name : obj.nameEng}</h1>
+            <div className={styles.content}>
+              <img src={obj.img} className={styles.img} alt="img" />
+              <h1 className={styles.context}>{i18n.resolvedLanguage === 'ru' ? obj.name : obj.nameEng}</h1>
+            </div>
             <p>{i18n.resolvedLanguage === 'ru' ? obj.description : obj.descEng}</p>
             <section>
               <div className={styles.services}>
