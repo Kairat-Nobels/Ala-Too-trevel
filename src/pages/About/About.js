@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeLoader } from '../../redux/action/loader';
-import address from '../../assets/habibaddress.jpg';
 import styles from './About.module.css';
 import inst from './../../components/assets/icons/inst.svg';
 import mail from './../../components/assets/icons/mail.svg';
