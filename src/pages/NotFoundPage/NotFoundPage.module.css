@@ -1,0 +1,21 @@
+.page {
+    background-image: url('../../assets/pageNotFound.jpg');
+    background-size: cover;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page a {
+    display: block;
+    margin-bottom: 200px;
+    padding: 10px 25px;
+    border-radius: 15px;
+    border: none;
+    text-decoration: none;
+    background: #7367f0;
+    font-size: 20px;
+    font-weight: 700;
+}

@@ -12,6 +12,7 @@ import NavBar from './components/navbar/NavBar';
 import ModalAction from './components/ModalAction/ModalAction';
 import Loader from './components/Loader/Loader';
 import TravelMoreInfo from './components/travelMoreInfo/TravelMoreInfo';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 export default function App()
 {
@@ -35,6 +36,7 @@ export default function App()
             <Route path="/about" element={<About />} />
             <Route path="/admin" element={<Admin />} />
           </Route>
+          <Route path='*' element={<NotFoundPage />} />
         </Routes>
         {checkACtion == 'accept' ? (
           <ModalAction typeAction={true} />
